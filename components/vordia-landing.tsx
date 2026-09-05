@@ -47,6 +47,27 @@ const productStory = [
   },
 ];
 
+const storyConnectors = [
+  {
+    path: 'M 184 520 L 284 520 L 408 588',
+    dotX: 408,
+    dotY: 588,
+    delay: 0.22,
+  },
+  {
+    path: 'M 826 252 L 756 252 L 664 350',
+    dotX: 664,
+    dotY: 350,
+    delay: 0.4,
+  },
+  {
+    path: 'M 826 756 L 746 756 L 626 690',
+    dotX: 626,
+    dotY: 690,
+    delay: 0.58,
+  },
+];
+
 function reveal(delay = 0) {
   return {
     initial: { opacity: 0, y: 18 },
@@ -54,6 +75,19 @@ function reveal(delay = 0) {
     viewport: { once: true, amount: 0.2 },
     transition: {
       duration: 0.7,
+      delay: delay / 1000,
+      ease: [0.2, 0.8, 0.2, 1] as const,
+    },
+  };
+}
+
+function storyFade(delay = 0) {
+  return {
+    initial: { opacity: 0, filter: 'blur(7px)' },
+    whileInView: { opacity: 1, filter: 'blur(0px)' },
+    viewport: { once: true, amount: 0.35 },
+    transition: {
+      duration: 0.8,
       delay: delay / 1000,
       ease: [0.2, 0.8, 0.2, 1] as const,
     },
@@ -424,6 +458,78 @@ export function VordiaLanding() {
             className="product-story"
             aria-labelledby="product-story-title"
           >
+            <svg
+              className="story-connectors"
+              viewBox="0 0 1000 1000"
+              preserveAspectRatio="none"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <defs>
+                <linearGradient
+                  id="story-line-gradient"
+                  x1="0%"
+                  y1="0%"
+                  x2="100%"
+                  y2="0%"
+                >
+                  <stop offset="0%" stopColor="#ff5e3d" stopOpacity="0.28" />
+                  <stop offset="55%" stopColor="#ff7658" stopOpacity="0.9" />
+                  <stop offset="100%" stopColor="#ffd1c4" stopOpacity="1" />
+                </linearGradient>
+                <filter id="story-line-glow" x="-40%" y="-40%" width="180%" height="180%">
+                  <feGaussianBlur stdDeviation="5" result="blur" />
+                  <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+              </defs>
+
+              {storyConnectors.map((connector, index) => (
+                <g key={connector.path}>
+                  <motion.path
+                    d={connector.path}
+                    className="story-connector story-connector--glow"
+                    initial={{ pathLength: 0, opacity: 0 }}
+                    whileInView={{ pathLength: 1, opacity: 0.44 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{
+                      duration: 0.9,
+                      delay: connector.delay,
+                      ease: [0.2, 0.8, 0.2, 1],
+                    }}
+                  />
+                  <motion.path
+                    d={connector.path}
+                    className="story-connector story-connector--core"
+                    initial={{ pathLength: 0, opacity: 0 }}
+                    whileInView={{ pathLength: 1, opacity: 0.92 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{
+                      duration: 0.9,
+                      delay: connector.delay,
+                      ease: [0.2, 0.8, 0.2, 1],
+                    }}
+                  />
+                  <motion.circle
+                    cx={connector.dotX}
+                    cy={connector.dotY}
+                    r="4"
+                    className={`story-connector__dot story-connector__dot--${index + 1}`}
+                    initial={{ opacity: 0, scale: 0 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{
+                      duration: 0.45,
+                      delay: connector.delay + 0.78,
+                      ease: [0.2, 0.8, 0.2, 1],
+                    }}
+                  />
+                </g>
+              ))}
+            </svg>
+
             <div className="product-story__feature-slot">
               {productStory.slice(0, 1).map((feature) => {
                 const Icon = feature.icon;
@@ -432,7 +538,7 @@ export function VordiaLanding() {
                   <motion.article
                     key={feature.title}
                     className="story-feature"
-                    {...reveal(140)}
+                    {...storyFade(120)}
                   >
                     <span className="story-feature__icon">
                       <Icon aria-hidden="true" size={18} strokeWidth={1.7} />
@@ -454,7 +560,7 @@ export function VordiaLanding() {
                   <motion.article
                     key={feature.title}
                     className="story-feature"
-                    {...reveal(230 + index * 140)}
+                    {...storyFade(300 + index * 180)}
                   >
                     <span className="story-feature__icon">
                       <Icon aria-hidden="true" size={18} strokeWidth={1.7} />
