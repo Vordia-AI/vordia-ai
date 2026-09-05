@@ -29,6 +29,24 @@ const capabilities = [
   },
 ];
 
+const productStory = [
+  {
+    label: 'Capture close',
+    title: 'Move the mic, not the moment.',
+    body: 'Detach the Pod from the band and place or clip it nearer the conversation for natural, hands-free capture.',
+  },
+  {
+    label: 'Understand',
+    title: 'Turn speech into something useful.',
+    body: 'Vordia shapes every recording into a structured transcript, concise summary, decisions, and clearly owned next steps.',
+  },
+  {
+    label: 'Recall',
+    title: 'Find the context behind the action.',
+    body: 'Ask across past conversations and recover the promise, task, or idea you need—without replaying the room.',
+  },
+];
+
 function reveal(delay = 0) {
   return {
     initial: { opacity: 0, y: 18 },
@@ -319,11 +337,16 @@ export function VordiaLanding() {
             </motion.a>
 
             <div className="nav-links">
-              {['Duo', 'How it works', 'Vordia Agent', 'Pilot'].map(
-                (label, index) => (
+              {[
+                ['Duo', '#duo'],
+                ['How it works', '#how-it-works'],
+                ['Vordia Agent', '#capabilities'],
+                ['Pilot', '#early-access'],
+              ].map(
+                ([label, href], index) => (
                   <motion.a
                     key={label}
-                    href={index === 0 ? '#duo' : '#capabilities'}
+                    href={href}
                     {...reveal(100 + index * 100)}
                   >
                     {label}
@@ -396,7 +419,49 @@ export function VordiaLanding() {
             </div>
           </section>
 
-          <div className="scroll-spacer" aria-hidden="true" />
+          <section
+            id="how-it-works"
+            className="product-story"
+            aria-labelledby="product-story-title"
+          >
+            <div className="product-story__lead">
+              <motion.span className="story-eyebrow" {...reveal(80)}>
+                Designed around real conversations
+              </motion.span>
+              <motion.h2 id="product-story-title" {...reveal(160)}>
+                One small pod.
+                <br />
+                Three layers of intelligence.
+              </motion.h2>
+              <motion.p className="product-story__intro" {...reveal(240)}>
+                Duo moves closer to the people speaking, then Vordia turns
+                what it hears into useful work—without putting a screen
+                between you and the room.
+              </motion.p>
+
+              <motion.article className="story-feature" {...reveal(320)}>
+                <span>01 / {productStory[0].label}</span>
+                <h3>{productStory[0].title}</h3>
+                <p>{productStory[0].body}</p>
+              </motion.article>
+            </div>
+
+            <div className="product-story__clearspace" aria-hidden="true" />
+
+            <div className="product-story__features">
+              {productStory.slice(1).map((feature, index) => (
+                <motion.article
+                  key={feature.label}
+                  className="story-feature"
+                  {...reveal(230 + index * 140)}
+                >
+                  <span>0{index + 2} / {feature.label}</span>
+                  <h3>{feature.title}</h3>
+                  <p>{feature.body}</p>
+                </motion.article>
+              ))}
+            </div>
+          </section>
 
           <section
             id="capabilities"

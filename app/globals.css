@@ -432,8 +432,109 @@
   background: rgb(255 255 255 / 85%);
 }
 
-.scroll-spacer {
-  height: 80vh;
+.product-story {
+  position: relative;
+  display: grid;
+  grid-template-columns:
+    minmax(250px, 0.9fr)
+    minmax(360px, 44vw)
+    minmax(240px, 0.8fr);
+  gap: clamp(22px, 3vw, 48px);
+  align-items: stretch;
+  width: min(100%, 1500px);
+  min-height: 100vh;
+  min-height: 100svh;
+  margin: 0 auto;
+  padding: clamp(108px, 15vh, 160px) clamp(24px, 5vw, 76px)
+    clamp(66px, 9vh, 104px);
+}
+
+.product-story__lead {
+  align-self: start;
+  max-width: 370px;
+}
+
+.story-eyebrow,
+.story-feature > span {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-shadow: 0 2px 10px rgb(0 0 0 / 62%);
+}
+
+.story-eyebrow {
+  display: inline-flex;
+  padding: 7px 0 7px 12px;
+  border-left: 2px solid #ff6044;
+  color: rgb(255 255 255 / 75%);
+  font-size: 9px;
+  line-height: 1.45;
+}
+
+.product-story h2 {
+  margin: 22px 0 0;
+  color: #fff;
+  font-size: clamp(35px, 3.35vw, 52px);
+  font-weight: 400;
+  letter-spacing: -0.045em;
+  line-height: 1.04;
+  text-wrap: balance;
+  text-shadow: 0 5px 24px rgb(0 0 0 / 72%);
+}
+
+.product-story__intro {
+  max-width: 340px;
+  margin: 22px 0 0;
+  color: rgb(255 255 255 / 72%);
+  font-size: clamp(13px, 1vw, 15px);
+  line-height: 1.68;
+  text-shadow: 0 3px 14px rgb(0 0 0 / 76%);
+}
+
+.product-story__clearspace {
+  min-width: 0;
+}
+
+.product-story__features {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 64px;
+  padding: clamp(34px, 6vh, 70px) 0 clamp(10px, 2vh, 24px);
+}
+
+.story-feature {
+  max-width: 320px;
+  padding-top: 15px;
+  border-top: 1px solid rgb(255 255 255 / 28%);
+  text-shadow: 0 3px 14px rgb(0 0 0 / 82%);
+}
+
+.product-story__lead .story-feature {
+  margin-top: clamp(44px, 7vh, 76px);
+}
+
+.story-feature > span {
+  color: rgb(255 255 255 / 58%);
+  font-size: 9px;
+  line-height: 1.4;
+}
+
+.story-feature h3 {
+  margin: 12px 0 0;
+  color: #fff;
+  font-size: clamp(17px, 1.35vw, 21px);
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+}
+
+.story-feature p {
+  margin: 9px 0 0;
+  color: rgb(255 255 255 / 68%);
+  font-size: 13px;
+  line-height: 1.58;
 }
 
 .capability-section {
@@ -574,6 +675,30 @@
   .capability-bottom {
     justify-content: flex-end;
   }
+
+  .product-story {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto minmax(48svh, 1fr) auto;
+    gap: 34px;
+    min-height: 145vh;
+    min-height: 145svh;
+    padding: 104px 22px 54px;
+  }
+
+  .product-story__lead {
+    max-width: min(82%, 390px);
+  }
+
+  .product-story__clearspace {
+    min-height: 48svh;
+  }
+
+  .product-story__features {
+    gap: 34px;
+    width: min(82%, 390px);
+    margin-left: auto;
+    padding: 0;
+  }
 }
 
 @media (max-width: 640px) {
@@ -623,10 +748,6 @@
 
   .product-card {
     max-width: none;
-  }
-
-  .scroll-spacer {
-    height: 80vh;
   }
 
   .capability-bottom {
