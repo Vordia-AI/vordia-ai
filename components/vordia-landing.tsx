@@ -425,8 +425,11 @@ export function VordiaLanding() {
             aria-labelledby="product-story-title"
           >
             <motion.header className="product-story__heading" {...reveal(80)}>
-              <h2 id="product-story-title" className="glass-badge">
-                One Pod · Full context
+              <span className="glass-badge">One Pod · Full context</span>
+              <h2 id="product-story-title">
+                Capture the moment.
+                <br />
+                Keep the context.
               </h2>
             </motion.header>
 
