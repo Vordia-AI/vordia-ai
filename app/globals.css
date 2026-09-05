@@ -455,25 +455,10 @@
   z-index: 2;
   top: clamp(92px, 11vh, 118px);
   left: clamp(24px, 5vw, 76px);
-  max-width: 350px;
-  text-shadow: 0 4px 20px rgb(0 0 0 / 76%);
 }
 
-.product-story__heading > span {
-  color: #ff7658;
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-}
-
-.product-story__heading h2 {
-  margin: 10px 0 0;
-  color: #fff;
-  font-size: clamp(31px, 3vw, 46px);
-  font-weight: 400;
-  letter-spacing: -0.045em;
-  line-height: 1.04;
+.product-story__heading .glass-badge {
+  margin: 0;
 }
 
 .product-story__feature-slot {
@@ -521,17 +506,17 @@
 .story-feature h3 {
   margin: 0;
   color: #fff;
-  font-size: clamp(18px, 1.45vw, 22px);
+  font-size: clamp(15px, 1.25vw, 18px);
   font-weight: 600;
   letter-spacing: -0.025em;
-  line-height: 1.25;
+  line-height: 1.35;
 }
 
 .story-feature p {
   margin: 12px 0 0;
   color: rgb(255 255 255 / 72%);
-  font-size: 13.5px;
-  line-height: 1.65;
+  font-size: 13px;
+  line-height: 1.55;
 }
 
 .capability-section {

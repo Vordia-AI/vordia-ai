@@ -425,8 +425,9 @@ export function VordiaLanding() {
             aria-labelledby="product-story-title"
           >
             <motion.header className="product-story__heading" {...reveal(80)}>
-              <span>Vordia Duo</span>
-              <h2 id="product-story-title">One Pod. Full context.</h2>
+              <h2 id="product-story-title" className="glass-badge">
+                One Pod · Full context
+              </h2>
             </motion.header>
 
             <div className="product-story__feature-slot">
