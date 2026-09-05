@@ -33,17 +33,17 @@ const productStory = [
   {
     icon: Mic2,
     title: 'Capture closer',
-    body: 'Detach the Pod. Keep the conversation natural.',
+    body: 'Detach the Pod from the wristband and place or clip it nearer the conversation, so voices stay clear while everyone speaks naturally.',
   },
   {
     icon: FileText,
     title: 'Understand faster',
-    body: 'Transcripts, summaries, and next steps—automatic.',
+    body: 'Vordia turns every recording into a structured transcript, concise summary, key decisions, and clearly owned next steps.',
   },
   {
     icon: Search,
     title: 'Recall anything',
-    body: 'Find the moment without replaying the meeting.',
+    body: 'Search across past conversations to recover the exact promise, task, or idea you need—without replaying the entire meeting.',
   },
 ];
 
@@ -424,6 +424,11 @@ export function VordiaLanding() {
             className="product-story"
             aria-labelledby="product-story-title"
           >
+            <motion.header className="product-story__heading" {...reveal(80)}>
+              <span>Vordia Duo</span>
+              <h2 id="product-story-title">One Pod. Full context.</h2>
+            </motion.header>
+
             <div className="product-story__feature-slot">
               {productStory.slice(0, 1).map((feature) => {
                 const Icon = feature.icon;
@@ -434,10 +439,12 @@ export function VordiaLanding() {
                     className="story-feature"
                     {...reveal(140)}
                   >
-                    <span className="story-feature__icon">
-                      <Icon aria-hidden="true" size={18} strokeWidth={1.7} />
-                    </span>
-                    <h2 id="product-story-title">{feature.title}</h2>
+                    <div className="story-feature__heading">
+                      <span className="story-feature__icon">
+                        <Icon aria-hidden="true" size={18} strokeWidth={1.7} />
+                      </span>
+                      <h3>{feature.title}</h3>
+                    </div>
                     <p>{feature.body}</p>
                   </motion.article>
                 );
@@ -456,10 +463,12 @@ export function VordiaLanding() {
                     className="story-feature"
                     {...reveal(230 + index * 140)}
                   >
-                    <span className="story-feature__icon">
-                      <Icon aria-hidden="true" size={18} strokeWidth={1.7} />
-                    </span>
-                    <h3>{feature.title}</h3>
+                    <div className="story-feature__heading">
+                      <span className="story-feature__icon">
+                        <Icon aria-hidden="true" size={18} strokeWidth={1.7} />
+                      </span>
+                      <h3>{feature.title}</h3>
+                    </div>
                     <p>{feature.body}</p>
                   </motion.article>
                 );
