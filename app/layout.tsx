@@ -9,7 +9,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://vordia-ai-duo.sacred-skunk-1431.chatgpt.site'),
+  metadataBase: new URL('https://vordia-ai-duo.jefferyhsia.chatgpt.site'),
   title: 'Vordia AI — Remember the Room. Keep Moving.',
   description:
     'Vordia Duo is a detachable AI voice wearable that turns real-world conversations into transcripts, decisions, actions, and searchable memory.',
