@@ -13,6 +13,11 @@ export const metadata: Metadata = {
   title: 'Vordia AI — Remember the Room. Keep Moving.',
   description:
     'Vordia Duo is a detachable AI voice wearable that turns real-world conversations into transcripts, decisions, actions, and searchable memory.',
+  icons: {
+    icon: [{ url: '/favicon.png', type: 'image/png', sizes: '512x512' }],
+    shortcut: '/favicon.png',
+    apple: '/favicon.png',
+  },
   openGraph: {
     title: 'Vordia AI — Remember the Room. Keep Moving.',
     description:
