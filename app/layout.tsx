@@ -2,6 +2,11 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 
+const siteUrl = 'https://vordia.ai';
+const siteTitle = 'Vordia Duo — Detachable AI Voice Recorder & Wearable';
+const siteDescription =
+  'Meet Vordia Duo, a detachable AI voice recorder and wearable that captures conversations, creates transcripts and summaries, and builds searchable memory.';
+
 const inter = Inter({
   variable: '--font-inter',
   subsets: ['latin'],
@@ -9,19 +14,41 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://vordia.ai'),
-  title: 'Vordia AI — Remember the Room. Keep Moving.',
-  description:
-    'Vordia Duo is a detachable AI voice wearable that turns real-world conversations into transcripts, decisions, actions, and searchable memory.',
+  metadataBase: new URL(siteUrl),
+  applicationName: 'Vordia AI',
+  title: siteTitle,
+  description: siteDescription,
+  alternates: {
+    canonical: '/',
+    languages: {
+      'en-US': '/',
+    },
+  },
+  creator: 'Vordia AI',
+  publisher: 'Vordia AI',
+  category: 'technology',
   icons: {
     icon: [{ url: '/favicon.png', type: 'image/png', sizes: '512x512' }],
     shortcut: '/favicon.png',
     apple: '/favicon.png',
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
+    },
+  },
   openGraph: {
-    title: 'Vordia AI — Remember the Room. Keep Moving.',
-    description:
-      'A detachable AI voice wearable that turns conversation into useful, searchable memory.',
+    title: siteTitle,
+    description: siteDescription,
+    url: '/',
+    siteName: 'Vordia AI',
+    locale: 'en_US',
     type: 'website',
     images: [
       {
@@ -34,9 +61,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Vordia AI — Remember the Room. Keep Moving.',
-    description:
-      'A detachable AI voice wearable that turns conversation into useful, searchable memory.',
+    title: siteTitle,
+    description: siteDescription,
     images: ['/og.png'],
   },
 };
