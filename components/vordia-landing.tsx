@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import Image from 'next/image';
-import { ChevronRight } from 'lucide-react';
+import { ChevronRight, FileText, Mic2, Search } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const VIDEO_URL = '/assets/vordia-duo-scroll.mp4';
@@ -31,19 +31,19 @@ const capabilities = [
 
 const productStory = [
   {
-    label: 'Capture close',
-    title: 'Move the mic, not the moment.',
-    body: 'Detach the Pod from the band and place or clip it nearer the conversation for natural, hands-free capture.',
+    icon: Mic2,
+    title: 'Capture closer',
+    body: 'Detach the Pod. Keep the conversation natural.',
   },
   {
-    label: 'Understand',
-    title: 'Turn speech into something useful.',
-    body: 'Vordia shapes every recording into a structured transcript, concise summary, decisions, and clearly owned next steps.',
+    icon: FileText,
+    title: 'Understand faster',
+    body: 'Transcripts, summaries, and next steps—automatic.',
   },
   {
-    label: 'Recall',
-    title: 'Find the context behind the action.',
-    body: 'Ask across past conversations and recover the promise, task, or idea you need—without replaying the room.',
+    icon: Search,
+    title: 'Recall anything',
+    body: 'Find the moment without replaying the meeting.',
   },
 ];
 
@@ -424,42 +424,46 @@ export function VordiaLanding() {
             className="product-story"
             aria-labelledby="product-story-title"
           >
-            <div className="product-story__lead">
-              <motion.span className="story-eyebrow" {...reveal(80)}>
-                Designed around real conversations
-              </motion.span>
-              <motion.h2 id="product-story-title" {...reveal(160)}>
-                One small pod.
-                <br />
-                Three layers of intelligence.
-              </motion.h2>
-              <motion.p className="product-story__intro" {...reveal(240)}>
-                Duo moves closer to the people speaking, then Vordia turns
-                what it hears into useful work—without putting a screen
-                between you and the room.
-              </motion.p>
+            <div className="product-story__feature-slot">
+              {productStory.slice(0, 1).map((feature) => {
+                const Icon = feature.icon;
 
-              <motion.article className="story-feature" {...reveal(320)}>
-                <span>01 / {productStory[0].label}</span>
-                <h3>{productStory[0].title}</h3>
-                <p>{productStory[0].body}</p>
-              </motion.article>
+                return (
+                  <motion.article
+                    key={feature.title}
+                    className="story-feature"
+                    {...reveal(140)}
+                  >
+                    <span className="story-feature__icon">
+                      <Icon aria-hidden="true" size={18} strokeWidth={1.7} />
+                    </span>
+                    <h2 id="product-story-title">{feature.title}</h2>
+                    <p>{feature.body}</p>
+                  </motion.article>
+                );
+              })}
             </div>
 
             <div className="product-story__clearspace" aria-hidden="true" />
 
             <div className="product-story__features">
-              {productStory.slice(1).map((feature, index) => (
-                <motion.article
-                  key={feature.label}
-                  className="story-feature"
-                  {...reveal(230 + index * 140)}
-                >
-                  <span>0{index + 2} / {feature.label}</span>
-                  <h3>{feature.title}</h3>
-                  <p>{feature.body}</p>
-                </motion.article>
-              ))}
+              {productStory.slice(1).map((feature, index) => {
+                const Icon = feature.icon;
+
+                return (
+                  <motion.article
+                    key={feature.title}
+                    className="story-feature"
+                    {...reveal(230 + index * 140)}
+                  >
+                    <span className="story-feature__icon">
+                      <Icon aria-hidden="true" size={18} strokeWidth={1.7} />
+                    </span>
+                    <h3>{feature.title}</h3>
+                    <p>{feature.body}</p>
+                  </motion.article>
+                );
+              })}
             </div>
           </section>
 

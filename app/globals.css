@@ -35,19 +35,19 @@
 }
 
 :root {
-  --background: #0a0a0a;
+  --background: #080a0e;
   --foreground: #ffffff;
-  --card: rgb(255 255 255 / 10%);
+  --card: rgb(21 28 36 / 38%);
   --card-foreground: #ffffff;
-  --popover: #161616;
+  --popover: #10151c;
   --popover-foreground: #ffffff;
   --primary: #ffffff;
   --primary-foreground: #080808;
-  --secondary: rgb(255 255 255 / 10%);
+  --secondary: rgb(21 28 36 / 38%);
   --secondary-foreground: #ffffff;
   --muted: rgb(255 255 255 / 8%);
   --muted-foreground: rgb(255 255 255 / 64%);
-  --accent: rgb(255 255 255 / 15%);
+  --accent: rgb(255 88 52 / 18%);
   --accent-foreground: #ffffff;
   --destructive: #ff5f56;
   --border: rgb(255 255 255 / 15%);
@@ -57,19 +57,19 @@
 }
 
 .dark {
-  --background: #0a0a0a;
+  --background: #080a0e;
   --foreground: #ffffff;
-  --card: rgb(255 255 255 / 10%);
+  --card: rgb(21 28 36 / 38%);
   --card-foreground: #ffffff;
-  --popover: #161616;
+  --popover: #10151c;
   --popover-foreground: #ffffff;
   --primary: #ffffff;
   --primary-foreground: #080808;
-  --secondary: rgb(255 255 255 / 10%);
+  --secondary: rgb(21 28 36 / 38%);
   --secondary-foreground: #ffffff;
   --muted: rgb(255 255 255 / 8%);
   --muted-foreground: rgb(255 255 255 / 64%);
-  --accent: rgb(255 255 255 / 15%);
+  --accent: rgb(255 88 52 / 18%);
   --accent-foreground: #ffffff;
   --destructive: #ff5f56;
   --border: rgb(255 255 255 / 15%);
@@ -120,7 +120,7 @@
   min-height: 280vh;
   overflow: clip;
   color: #fff;
-  background: #0a0a0a;
+  background: #080a0e;
 }
 
 .scroll-video {
@@ -129,7 +129,7 @@
   inset: 0;
   overflow: hidden;
   pointer-events: none;
-  background: #0a0a0a;
+  background: #080a0e;
 }
 
 .scroll-video__poster,
@@ -142,6 +142,7 @@
   object-fit: cover;
   object-position: center;
   opacity: 0;
+  filter: saturate(1.1) contrast(1.02);
   transition: opacity 500ms ease;
 }
 
@@ -168,12 +169,12 @@
   background:
     linear-gradient(
       90deg,
-      rgb(5 6 8 / 82%) 0%,
-      rgb(6 7 9 / 63%) 36%,
-      rgb(6 7 9 / 42%) 62%,
-      rgb(5 6 8 / 60%) 100%
+      rgb(3 8 14 / 82%) 0%,
+      rgb(5 10 16 / 63%) 36%,
+      rgb(8 9 14 / 42%) 62%,
+      rgb(13 6 5 / 58%) 100%
     ),
-    linear-gradient(180deg, rgb(0 0 0 / 30%), transparent 28%, rgb(0 0 0 / 42%));
+    linear-gradient(180deg, rgb(3 8 14 / 30%), transparent 28%, rgb(12 5 4 / 42%));
 }
 
 .scroll-video__grain {
@@ -199,7 +200,7 @@
   right: 0;
   left: 0;
   border-bottom: 1px solid rgb(255 255 255 / 15%);
-  background: rgb(10 10 10 / 12%);
+  background: rgb(7 11 16 / 18%);
   backdrop-filter: blur(10px);
 }
 
@@ -261,7 +262,7 @@
   border: 1px solid rgb(255 255 255 / 20%);
   border-radius: 7px;
   color: #fff;
-  background: rgb(255 255 255 / 15%);
+  background: rgb(20 28 36 / 38%);
   backdrop-filter: blur(14px);
   font-size: 13px;
   font-weight: 500;
@@ -342,7 +343,7 @@
   padding: 7px 12px;
   border-left: 2px solid #fff;
   color: #fff;
-  background: rgb(255 255 255 / 15%);
+  background: rgb(20 28 36 / 38%);
   backdrop-filter: blur(14px);
   font-size: 10px;
   font-weight: 500;
@@ -371,7 +372,7 @@
   padding: 12px;
   border: 1px solid rgb(255 255 255 / 15%);
   border-radius: 16px;
-  background: rgb(255 255 255 / 15%);
+  background: rgb(20 28 36 / 42%);
   box-shadow: 0 18px 48px rgb(0 0 0 / 20%);
   backdrop-filter: blur(18px);
 }
@@ -449,47 +450,9 @@
     clamp(66px, 9vh, 104px);
 }
 
-.product-story__lead {
-  align-self: start;
-  max-width: 370px;
-}
-
-.story-eyebrow,
-.story-feature > span {
-  font-family: var(--font-inter), system-ui, sans-serif;
-  font-weight: 600;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  text-shadow: 0 2px 10px rgb(0 0 0 / 62%);
-}
-
-.story-eyebrow {
-  display: inline-flex;
-  padding: 7px 0 7px 12px;
-  border-left: 2px solid #ff6044;
-  color: rgb(255 255 255 / 75%);
-  font-size: 9px;
-  line-height: 1.45;
-}
-
-.product-story h2 {
-  margin: 22px 0 0;
-  color: #fff;
-  font-size: clamp(35px, 3.35vw, 52px);
-  font-weight: 400;
-  letter-spacing: -0.045em;
-  line-height: 1.04;
-  text-wrap: balance;
-  text-shadow: 0 5px 24px rgb(0 0 0 / 72%);
-}
-
-.product-story__intro {
-  max-width: 340px;
-  margin: 22px 0 0;
-  color: rgb(255 255 255 / 72%);
-  font-size: clamp(13px, 1vw, 15px);
-  line-height: 1.68;
-  text-shadow: 0 3px 14px rgb(0 0 0 / 76%);
+.product-story__feature-slot {
+  align-self: center;
+  max-width: 290px;
 }
 
 .product-story__clearspace {
@@ -501,38 +464,40 @@
   flex-direction: column;
   justify-content: space-between;
   gap: 64px;
-  padding: clamp(34px, 6vh, 70px) 0 clamp(10px, 2vh, 24px);
+  padding: clamp(50px, 9vh, 92px) 0 clamp(28px, 5vh, 54px);
 }
 
 .story-feature {
-  max-width: 320px;
-  padding-top: 15px;
-  border-top: 1px solid rgb(255 255 255 / 28%);
+  max-width: 290px;
   text-shadow: 0 3px 14px rgb(0 0 0 / 82%);
 }
 
-.product-story__lead .story-feature {
-  margin-top: clamp(44px, 7vh, 76px);
+.story-feature__icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgb(255 109 77 / 40%);
+  border-radius: 12px;
+  color: #ff6d4d;
+  background: rgb(255 82 48 / 14%);
+  box-shadow: 0 8px 30px rgb(255 74 38 / 12%);
+  backdrop-filter: blur(12px);
 }
 
-.story-feature > span {
-  color: rgb(255 255 255 / 58%);
-  font-size: 9px;
-  line-height: 1.4;
-}
-
+.story-feature h2,
 .story-feature h3 {
-  margin: 12px 0 0;
+  margin: 14px 0 0;
   color: #fff;
-  font-size: clamp(17px, 1.35vw, 21px);
-  font-weight: 500;
+  font-size: clamp(18px, 1.45vw, 22px);
+  font-weight: 600;
   letter-spacing: -0.025em;
   line-height: 1.25;
 }
 
 .story-feature p {
-  margin: 9px 0 0;
-  color: rgb(255 255 255 / 68%);
+  margin: 7px 0 0;
+  color: rgb(255 255 255 / 72%);
   font-size: 13px;
   line-height: 1.58;
 }
@@ -583,7 +548,7 @@
 .button--secondary {
   border: 1px solid rgb(255 255 255 / 25%);
   color: #fff;
-  background: rgb(255 255 255 / 10%);
+  background: rgb(20 28 36 / 32%);
   backdrop-filter: blur(14px);
 }
 
@@ -596,7 +561,7 @@
   padding: 0 23px;
   border: 1px solid rgb(255 255 255 / 15%);
   border-radius: 20px;
-  background: rgb(255 255 255 / 10%);
+  background: rgb(20 28 36 / 36%);
   box-shadow: 0 22px 62px rgb(0 0 0 / 19%);
   backdrop-filter: blur(18px);
 }
@@ -685,7 +650,7 @@
     padding: 104px 22px 54px;
   }
 
-  .product-story__lead {
+  .product-story__feature-slot {
     max-width: min(82%, 390px);
   }
 
