@@ -198,11 +198,11 @@ function ScrollVideo() {
           await waitForMediaEvent(sampler, 'loadeddata');
         }
 
-        const totalFrames = Math.min(
-          90,
-          Math.max(24, Math.round(sampler.duration * 12)),
-        );
-        const maxWidth = window.innerWidth < 768 ? 640 : 960;
+        const isMobile = window.matchMedia('(max-width: 767px)').matches;
+        const totalFrames = isMobile
+          ? Math.min(48, Math.max(24, Math.round(sampler.duration * 7)))
+          : Math.min(90, Math.max(24, Math.round(sampler.duration * 12)));
+        const maxWidth = isMobile ? 512 : 960;
         const sampleWidth = Math.min(maxWidth, sampler.videoWidth);
         const sampleHeight = Math.round(
           sampleWidth * (sampler.videoHeight / sampler.videoWidth),
