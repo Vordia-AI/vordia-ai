@@ -76,7 +76,7 @@ for (let index = 0; index < frameCount; index += 1) {
     .toFile(path.join(output, `frame-${String(index).padStart(3, '0')}.webp`));
 }
 writeFileSync(
-  path.join(output, 'manifest.json'),
+  path.join(root, 'lib/scroll-sequence.json'),
   JSON.stringify(
     {
       frameCount,

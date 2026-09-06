@@ -6,7 +6,7 @@ import ts from 'typescript';
 
 const manifest = JSON.parse(
   readFileSync(
-    new URL('../public/assets/duo-scroll-v1/manifest.json', import.meta.url),
+    new URL('../lib/scroll-sequence.json', import.meta.url),
   ),
 );
 const source = readFileSync(
@@ -122,7 +122,7 @@ function harness({ reduced = false, restoredY = 0 } = {}) {
       if (name === 'react/jsx-runtime')
         return { jsx: () => null, jsxs: () => null };
       if (name === 'next/image') return {};
-      if (name.endsWith('manifest.json')) return manifest;
+      if (name.endsWith('scroll-sequence.json')) return manifest;
       throw new Error(`Unexpected dependency: ${name}`);
     },
   });

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
-import sequence from '@/public/assets/duo-scroll-v1/manifest.json';
+import sequence from '@/lib/scroll-sequence.json';
 
 const LAST_FRAME = sequence.frameCount - 1;
 const CACHE_LIMIT = 12;
