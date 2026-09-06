@@ -34,6 +34,9 @@ jobs:
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
+      - name: Test mobile scroll animation
+        run: npm run test:scroll
+
       - name: Build static site
         run: npm run build:pages
 

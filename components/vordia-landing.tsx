@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, type ReactNode } from 'react';
 import Image from 'next/image';
 import { ChevronRight, FileText, Mic2, Search } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { MobileScrollSequence } from './mobile-scroll-sequence';
 
 const VIDEO_URL = '/assets/vordia-duo-scroll.mp4';
 const VIDEO_SOURCE_ID = '8cff47c1-cef1-4d06-b837-35a715ac2f16';
@@ -84,6 +85,33 @@ function waitForMediaEvent(
 }
 
 function ScrollVideo() {
+  const [mobile, setMobile] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    const query = window.matchMedia(
+      '(max-width: 900px), (hover: none) and (pointer: coarse)',
+    );
+    const update = () => setMobile(query.matches);
+    update();
+    query.addEventListener('change', update);
+    return () => query.removeEventListener('change', update);
+  }, []);
+
+  if (mobile === true) return <MobileScrollSequence />;
+  if (mobile === false) return <DesktopScrollVideo />;
+
+  // Render a poster during SSR/hydration without initiating mobile MP4 loads.
+  return (
+    <div className="scroll-video" aria-hidden="true">
+      <Image src="/assets/duo-scroll-v1/frame-000.webp" alt="" fill priority
+        unoptimized className="scroll-video__poster" />
+      <div className="scroll-video__scrim" />
+      <div className="scroll-video__grain" />
+    </div>
+  );
+}
+
+function DesktopScrollVideo() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [hasDecodedFrame, setHasDecodedFrame] = useState(false);
